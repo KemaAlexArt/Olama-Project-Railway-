@@ -1,9 +1,30 @@
-version: "3.7"
+0version: '3.8'
 
 services:
-  traefik:
-    image: "traefik"
-    restart: always
-    command:
-      - "--api=true"
-      - "--api.in
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_MODELS_PATH=/root/.ollama/models
+    networks:
+      - ollama-network
+    deploy:
+      resources:
+        limits:
+          memory: 12G
+        reservations:
+          memory: 4G
+
+volumes:
+  ollama_data:
+    driver: local
+
+networks:
+  ollama-network:
+    driver: bridge
