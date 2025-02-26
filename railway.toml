@@ -1,0 +1,28 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+numReplicas = 1
+healthcheckPath = "/api/health"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5
+
+[[services]]
+name = "ollama"
+internal_port = 11434
+protocol = "tcp"
+
+[[volumes]]
+name = "ollama_data"
+mountPath = "/root/.ollama"
+persistent = true
+
+[service.resources]
+memory_mb = 8192
+cpu_units = 2000
+
+[service.environment]
+OLLAMA_HOST = "0.0.0.0"
+OLLAMA_MODELS_PATH = "/root/.ollama/models"
