@@ -13,5 +13,5 @@ ENV OLLAMA_MODELS_PATH=/root/.ollama/models
 # Открываем порт для API
 EXPOSE 11434
 
-# Запускаем ollama при старте контейнера
+# Запускаем скрипт start.sh при старте контейнера
 CMD ["/app/start.sh"]
