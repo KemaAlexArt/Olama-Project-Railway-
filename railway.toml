@@ -4,8 +4,8 @@ dockerfilePath = "Dockerfile"
 
 [deploy]
 numReplicas = 1
-healthcheckPath = "/api/health"
-healthcheckTimeout = 600  # Увеличено до 600 секунд (10 минут)
+healthcheckPath = ""  # Отключен healthcheck, так как Ollama не предоставляет /api/health
+healthcheckTimeout = 600  # Увеличено до 600 секунд (на случай, если healthcheck будет включен)
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 5
 
