@@ -2,7 +2,7 @@ FROM ollama/ollama:latest
 
 WORKDIR /app
 
-# Копируем скрипт для загрузки моделей при запуске (опционально)
+# Копируем скрипт для загрузки моделей при запуске
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 
