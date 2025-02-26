@@ -16,7 +16,7 @@
     "autoscaling": false
   },
   "resources": {
-    "memory": "8192MB",
+    "memory": "12288MB",  # Увеличено до 12 ГБ
     "cpu": 2
   }
 }
